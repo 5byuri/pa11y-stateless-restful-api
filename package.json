@@ -1,0 +1,33 @@
+{
+  "name": "pa11y-stateless-restful-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsx",
+    "dev": "tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5byuri/pa11y-stateless-restful-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/5byuri/pa11y-stateless-restful-api/issues"
+  },
+  "homepage": "https://github.com/5byuri/pa11y-stateless-restful-api#readme",
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "prettier": "3.6.2",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "json": "^11.0.0",
+    "url": "^0.11.4"
+  }
+}
