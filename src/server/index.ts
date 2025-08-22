@@ -13,10 +13,10 @@
 // limitations under the License.
 
 
-import { Method } from "@/api";
-import http, { METHODS } from "http";
+// import { Method } from "@/api";
+import http from "http";
 
-
+// http://localhost:50259/?scanningMethod=sarif&sitemapurl=standardservice
 
   //http://localhost?method=sarif&xmlurl=standardservice/xml.de mockup
 
@@ -25,27 +25,41 @@ const server = http.createServer((req, res) => {
 
 
 
-const url = (`http://localhost:50259/${req.url}`)
 
 
 
+const url = new URL(req.url ?? '/', 'http://localhost:50259');
 
-  const params = new URL(url)
-    .searchParams;
-    const scanningMethod: Method  = params.get("scanningMethod") typeof Method;
-    console.log(scanningMethod)
+// const url = new URL(
+//   "http://localhost:50259/?scanningMethod=sarif&sitemapurl=standardservice.xml"
+// );
 
-  res.writeHead(200, { "Content-Type": "application/json" });
+
+const scanningMethodInput = url.searchParams.get('scanningMethod');
+const sitemapURL = url.searchParams.get("sitemapurl");
+
+
+if (
+  (scanningMethodInput !== "sarif" && scanningMethodInput !== "json" || sitemapURL === null )
+) {
+  res.writeHead(400, { "Content-Type": "application/json" });
   res.end(
-    JSON.stringify(
-      {
-        // pathname,
-        // query,
-        fullUrl: req.url,
-      },
-      null,
-      
-    )
+    JSON.stringify({
+      error: "Invalid or missing 'scanningMethod'",
+      allowed: ["sarif", "json"],
+      got: scanningMethodInput,
+      sitemapURL: sitemapURL,
+    })
+  );
+  return;
+}
+
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(
+    JSON.stringify({
+      scanningMethod: scanningMethodInput,
+      sitemapURL: sitemapURL,
+    })
   );
 });
 

@@ -1,4 +1,4 @@
-import { UrlConfig } from "api";
+import { UrlConfig } from "@/api";
 
 export function getUrlsFromSitemap(sitemapUrl: string, config: UrlConfig) {
   return Promise.resolve()
@@ -41,7 +41,7 @@ export function getUrlsFromSitemap(sitemapUrl: string, config: UrlConfig) {
         console.log("error")
       }
     //   throw new Error(`The sitemap "${sitemapUrl}" could not be parsed`);
-        console.log("error");
+            console.log("error")
 
     });
 }

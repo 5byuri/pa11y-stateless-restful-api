@@ -7,4 +7,4 @@ export interface UrlConfig {
   urls: string[];
 }
 
-export type Method = "json" | "sarif" | null;
+export type Method = "json" | "sarif";
