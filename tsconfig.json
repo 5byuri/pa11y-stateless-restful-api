@@ -45,7 +45,7 @@
     ]
   },
   "files": [
-    "src/index.ts"
+    "src/server/index.ts"
   ],
   "include": [
     "next-env.d.ts",

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsx",
-    "dev": "tsx src/index.ts",
+    "dev": "tsx src/server/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "dotenv": "^17.2.1",
     "json": "^11.0.0",
     "url": "^0.11.4"
   }

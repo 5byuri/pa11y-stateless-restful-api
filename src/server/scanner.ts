@@ -1,4 +1,7 @@
-export const sarifBuilder: any (report: any) {
+/* eslint max-len: 'off' */
+"use strict";
+
+module.exports = function sarifBuilder(report) {
   const sarif = {
     version: "2.1.0",
     $schema:
