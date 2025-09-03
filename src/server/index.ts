@@ -14,14 +14,12 @@
 
 
 // import { Method } from "@/api";
+import { UrlConfig } from "@/api";
 import http from "http";
-
-// http://localhost:50259/?scanningMethod=sarif&sitemapurl=standardservice
-
-  //http://localhost?method=sarif&xmlurl=standardservice/xml.de mockup
+import { getUrlsFromSitemap } from "./getUrlsFromSitemap";
 
 const server = http.createServer((req, res) => {
-//   const config : UrlConfig = { urls : [] }
+  const config : UrlConfig = { urls : [] }
 
 
 
@@ -29,16 +27,12 @@ const server = http.createServer((req, res) => {
 
 
 const url = new URL(req.url ?? '/', 'http://localhost:50259');
-
-// const url = new URL(
-//   "http://localhost:50259/?scanningMethod=sarif&sitemapurl=standardservice.xml"
-// );
-
-
 const scanningMethodInput = url.searchParams.get('scanningMethod');
 const sitemapURL = url.searchParams.get("sitemapurl");
 
 
+ const results = getUrlsFromSitemap(sitemapURL!, config)
+results.then((results) => console.log(results))
 if (
   (scanningMethodInput !== "sarif" && scanningMethodInput !== "json" || sitemapURL === null )
 ) {
@@ -57,8 +51,7 @@ if (
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.end(
     JSON.stringify({
-      scanningMethod: scanningMethodInput,
-      sitemapURL: sitemapURL,
+
     })
   );
 });

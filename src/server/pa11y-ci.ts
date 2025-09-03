@@ -7,19 +7,19 @@
 // options.
 //
 'use strict';
+import {Command} from 'commander';
 
-const cheerio = require('cheerio');
-const fetch = require('node-fetch');
-const fs = require('fs');
-const pa11yCi = require('..');
-const path = require('path');
-const globby = require('globby');
-const protocolify = require('protocolify');
-const pkg = require('../package.json');
-const {Command} = require('commander');
+import cheerio from 'cheerio';
+import fetch from 'node-fetch';
+import fs from 'fs';
+import pa11yCi from '..';
+import path from 'path';
+import {globby} from 'globby';
+import protocolify from 'protocolify';
+import pkg from 'package.json';
 const commander = new Command();
 
-const sarifBuilder = require('../lib/helpers/sarifbuilder');
+import sarifBuilder from '../lib/helpers/sarifbuilder';
 
 // Here we're using Commander to specify the CLI options
 commander
